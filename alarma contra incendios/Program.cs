@@ -111,7 +111,9 @@ namespace SistemaContraincendio
                         Console.ReadKey();
 
 
-
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
                         Console.WriteLine("          M U C H A S  G R A C I A S  P O R   T E N E R   C O N F I A N Z A   E N   N O S O T R O S");
                         continuar = false;
                         Console.ReadKey();

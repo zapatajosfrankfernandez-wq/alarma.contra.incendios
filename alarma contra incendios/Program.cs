@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace SistemaContraincendio
 {
     internal class Program
     {
+        static bool continuar = true;
         static void Main(string[] args)
         {
             Console.Title = "Sistema de Monitoreo - EL BOMBERITO";
@@ -24,9 +26,7 @@ namespace SistemaContraincendio
              Console.WriteLine();
            
 
-                
-
-            while (true)
+            while (continuar)
             {
 
                 Console.Clear();              
@@ -67,12 +67,11 @@ namespace SistemaContraincendio
             Console.WriteLine("1. Cuartos de Piso 1");
             Console.WriteLine("2. Cuartos de Piso 2");
             Console.WriteLine("3. Cuartos de Piso 3");
-            Console.WriteLine("4 Salir");
+            Console.WriteLine("4. Salir");
             Console.Write("\nSeleccione una opción (1-4): ");
 
             if (int.TryParse(Console.ReadLine(), out int opcion))
             {
-                Console.Clear();
 
                 switch (opcion)
                 {
@@ -80,12 +79,14 @@ namespace SistemaContraincendio
                         Console.Clear();
                         Console.WriteLine(" Ingresando al Piso 1...");
                         new piso1().MostrarSimulacion();
+                        Console.WriteLine();
                         break;
 
                     case 2:
                         Console.Clear();
                         Console.WriteLine(" Ingresando al Piso 2...");
                         new piso2().MostrarEstado();
+                        Console.WriteLine();
                         break;
 
                     case 3:
@@ -95,19 +96,37 @@ namespace SistemaContraincendio
                         break;
 
                     case 4:
-                        Console.WriteLine(" Saliendo del sistema ...");
+                        try
+                        {
+                            SoundPlayer sonidoSalir = new SoundPlayer("Alarmas/sonidoLEVE.wav");
+                            sonidoSalir.Play();
+                        }
+                        catch (Exception ex)
+                        { 
+                            Console.WriteLine("Error al reproducir sonido de salida: " + ex.Message);
+                        }
+                        Console.Clear();
+                        Console.WriteLine(" SALIENDO DEL SISTEMA ...");
+                        Console.ReadKey();
+
+
+
+                        Console.WriteLine("          M U C H A S  G R A C I A S  P O R   T E N E R   C O N F I A N Z A   E N   N O S O T R O S");
+                        continuar = false;
+                        Console.ReadKey();
+                     
                         return;
 
                     default:
                         Console.WriteLine(" Opción no válida. Intente de nuevo.");
+                        Console.ReadKey();
                         break;
                 }
             }
             else
             {
                 Console.WriteLine(" Entrada inválida. Debe ingresar un número del 1 al 6.");
-            }
-            Console.WriteLine("\nPresione cualquier tecla para volver al menú...");
+            }         
             Console.ReadKey();
            
         }

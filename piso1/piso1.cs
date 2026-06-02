@@ -12,9 +12,9 @@ namespace Piso1
         public DateTime Tiempo { get; set; }
         public int Piso { get; set; }
         public double Temp1 { get; set; }
-        public int Humo1 { get; set; }
+        public double Humo1 { get; set; } 
         public double Temp2 { get; set; }
-        public int Humo2 { get; set; }
+        public double Humo2 { get; set; } 
     }
 
     public class piso1
@@ -23,7 +23,6 @@ namespace Piso1
 
         public void MostrarSimulacion()
         {
-            
             P1 dato = SimularSensores();
             PlanoCasaP1(dato);
             MostrarEstado(dato);
@@ -36,25 +35,24 @@ namespace Piso1
             {
                 Tiempo = DateTime.Now,
                 Piso = 1,
-                Temp1 = Math.Round(rnd.NextDouble() * 70 + 20, 1),
-                Humo1 = rnd.Next(10, 50),
-                Temp2 = Math.Round(rnd.NextDouble() * 70 + 20, 1),
-                Humo2 = rnd.Next(10, 50)
+                Temp1 = rnd.Next(60, 90),
+                Humo1 = Math.Round(rnd.NextDouble() * 100, 1),
+                Temp2 = rnd.Next(60, 90),
+                Humo2 = Math.Round(rnd.NextDouble() * 100,1)
             };
         }
 
         public void PlanoCasaP1(P1 dato)
         {
-
             Console.Clear();
             Console.WriteLine("                     ╔════════════════════════════════════════════░░░░══════════════════════════░░░░══╗");
             Console.WriteLine("                     ║      ╔══════╗               ▓                           ┌───────────────┐      ║");
             Console.WriteLine("                     ║      ║------║               ▓                           │ Cuarto 2      │      ║");
             Console.WriteLine("                     ║      ║--  --║               ▓                           │ Temp:{0,5}°C  │      ║", dato.Temp2);
-            Console.WriteLine("                     ║      ║--  --║               ▓                           │ Humo: {1,3}%  │      ║", dato.Temp2, dato.Humo2);
+            Console.WriteLine("                     ║      ║--  --║               ▓                           │ Humo:{1,5}%   │      ║", dato.Temp2, dato.Humo2);
             Console.WriteLine("                     ║      ║--  --║               ▓                           └───────────────┘      ║");
             Console.WriteLine("                     ║      ║--  --║               ▓                                                  ║");
-            Console.WriteLine("                     ║      ║--  --║               ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓       ║");
+            Console.WriteLine("                     ║      ║--  --║               ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓       ║");
             Console.WriteLine("                     ║      ╚══════╝                                                                  ║");
             Console.WriteLine("                     ║                                                                                ║");
             Console.WriteLine("                     ║                                                                                ║");
@@ -65,29 +63,26 @@ namespace Piso1
             Console.WriteLine("                     ║                                                                                ║");
             Console.WriteLine("                     ║                                                                                ║");
             Console.WriteLine("                     ║                       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                  ║");
-            Console.WriteLine("                     ║                                                              ▓                 ║");
-            Console.WriteLine("                     ║                                                              ▓                 ║");
-            Console.WriteLine("                     ║                                                              ▓                 ║");
-            Console.WriteLine("                     ║                         ┌───────────────┐                    ▓                 ║");
-            Console.WriteLine("                     ║                   ▓     │ Cuarto 1      │                    ▓                 ║");
-            Console.WriteLine("                     ║                   ▓     │ Temp: {0,5}°C │                    ▓                 ║", dato.Temp1);
-            Console.WriteLine("                     ║                   ▓     │ Humo: {1,3}%    │                    ▓                 ║", dato.Temp1, dato.Humo1);
-            Console.WriteLine("                     ║                   ▓     └───────────────┘                    ▓                 ║");
+            Console.WriteLine("                     ║                                                               ▓                ║");
+            Console.WriteLine("                     ║                                                               ▓                ║");
+            Console.WriteLine("                     ║                                                               ▓                ║");
+            Console.WriteLine("                     ║                                         ┌───────────────┐     ▓                ║");
+            Console.WriteLine("                     ║                                   ▓     │ Cuarto 1      │     ▓                ║");
+            Console.WriteLine("                     ║                                   ▓     │ Temp: {0,5}°C │     ▓                ║", dato.Temp1);
+            Console.WriteLine("                     ║                                   ▓     │ Humo: {1,5}%  │     ▓                ║", dato.Temp1, dato.Humo1);
+            Console.WriteLine("                     ║                                   ▓     └───────────────┘     ▓                ║");
             Console.WriteLine("                     ╚══════░░░░════════════════════════════════════════░░░░══════════════════════════╝");
-
         }
-
-
         public void MostrarEstado(P1 dato)
         {
             Console.WriteLine("                                    ════════════════════════════════════════════════");
-            Console.WriteLine("                                        ========== ESTADO DEL PISO  ==========");
+            Console.WriteLine("                                         ========== ESTADO DEL PISO  ==========");
             EscribirCentrado($"Última actualización: {dato.Tiempo}");
 
-            EscribirCentrado($"Cuarto 1 - Temp: {dato.Temp1} °C", NivelRiesgoTemperatura(dato.Temp1));
+            EscribirCentrado($"Cuarto 1 - Temp: {dato.Temp1} °C", NivelRiesgoTemperature(dato.Temp1));
             EscribirCentrado($"Cuarto 1 - Humo: {dato.Humo1}%", NivelRiesgoHumo(dato.Humo1));
             Console.WriteLine("                                    ════════════════════════════════════════════════");
-            EscribirCentrado($"Cuarto 2 - Temp: {dato.Temp2} °C", NivelRiesgoTemperatura(dato.Temp2));
+            EscribirCentrado($"Cuarto 2 - Temp: {dato.Temp2} °C", NivelRiesgoTemperature(dato.Temp2));
             EscribirCentrado($"Cuarto 2 - Humo: {dato.Humo2}%", NivelRiesgoHumo(dato.Humo2));
 
             Console.WriteLine("                                    ════════════════════════════════════════════════");
@@ -97,7 +92,6 @@ namespace Piso1
             int ancho = Console.WindowWidth;
             int margen = Math.Max((ancho - texto.Length) / 2, 0);
             Console.Write(new string(' ', margen));
-
             switch (nivel)
             {
                 case "Estable":
@@ -112,11 +106,10 @@ namespace Piso1
 
             Console.WriteLine(texto);
         }
-
         public void VerificarAlarmas(P1 dato)
         {
-            bool cuarto1Peligro = dato.Temp1 >= 30 || dato.Humo1 >= 48;
-            bool cuarto2Peligro = dato.Temp2 >= 30 || dato.Humo2 >= 48;
+            bool cuarto1Peligro = dato.Temp1 >= 30.0 || dato.Humo1 >= 48.0;
+            bool cuarto2Peligro = dato.Temp2 >= 30.0 || dato.Humo2 >= 48.0;
 
             if (cuarto1Peligro && cuarto2Peligro)
             {
@@ -153,18 +146,16 @@ namespace Piso1
                 Console.WriteLine("Error al reproducir sonido leve: " + ex.Message);
             }
         }
-
-        public string NivelRiesgoTemperatura(double temp)
+        public string NivelRiesgoTemperature(double temp)
         {
-            if (temp < 28) return "Estable";
-            if (temp < 30) return "Normal";
+            if (temp < 28.0) return "Estable";
+            if (temp < 30.0) return "Normal";
             return "Peligro";
         }
-
-        public string NivelRiesgoHumo(int humo)
+        public string NivelRiesgoHumo(double humo)
         {
-            if (humo < 20) return "Bajo";
-            if (humo < 35) return "Moderado";
+            if (humo < 20.0) return "Bajo";
+            if (humo < 35.0) return "Moderado";
             return "Peligro";
         }
 

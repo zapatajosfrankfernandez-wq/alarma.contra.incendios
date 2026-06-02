@@ -64,10 +64,11 @@ namespace SistemaContraincendio
         static void MenuPrincipal()
         {
             Console.WriteLine("MENÚ DE MONITOREO");
-            Console.WriteLine("1. Cuartos de Piso 1");
-            Console.WriteLine("2. Cuartos de Piso 2");
-            Console.WriteLine("3. Cuartos de Piso 3");
+            Console.WriteLine("1. Cuartos de Piso 1: ");
+            Console.WriteLine("2. Cuartos de Piso 2: ");
+            Console.WriteLine("3. Cuartos de Piso 3: ");
             Console.WriteLine("4. Salir");
+            Console.WriteLine();
             Console.Write("\nSeleccione una opción (1-4): ");
 
             if (int.TryParse(Console.ReadLine(), out int opcion))

@@ -124,9 +124,9 @@ namespace Piso1
             }
             else if (cuarto1Peligro)
             {
-                EscribirCentrado(" ALARMA DE INCENDIO");
-                EscribirCentrado(" CUARTO 1 ");
-                EscribirCentrado(" Luces Estroboscópicas: ACTIVADA EN TODOS LOS PISOS");
+                EscribirCentrado("ALARMA DE INCENDIO");
+                EscribirCentrado("CUARTO 1 ");
+                EscribirCentrado("Luces Estroboscópicas: ACTIVADA EN TODOS LOS PISOS");
                 Console.WriteLine("                                                     Porfavor Evacuar");
                 ReproducirAlarma2("Alarmas/sonidoLEVE.wav");
             }

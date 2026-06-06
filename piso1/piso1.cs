@@ -144,6 +144,8 @@ namespace Piso1
             }
 
             Console.WriteLine("                      ============================================================================");
+            Console.WriteLine("\nPresione cualquier tecla para regresar...");
+            Console.ReadKey();
         }
 
         public void ReproducirAlarma1(string rutaArchivo)

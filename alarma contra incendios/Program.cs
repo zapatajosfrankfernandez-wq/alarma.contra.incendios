@@ -13,9 +13,16 @@ using Piso3;
 
 namespace SistemaContraincendio
 {
-    internal class Program
+    public class Program
     {
-        static bool continuar = true;
+          static bool continuar = true;
+          static string ultimoResultado = "";
+          static Random rndEnergia = new Random();
+          static List<string> historial = new List<string>();
+          static bool energiaPrincipal = true;
+          static bool energiaRespaldo = true;
+             
+        
         static void Main(string[] args)
         {
             Console.Title = "Sistema de Monitoreo - EL BOMBERITO";
@@ -26,6 +33,34 @@ namespace SistemaContraincendio
             Console.WriteLine("===================================================================================");
             Console.WriteLine();
 
+            energiaPrincipal = rndEnergia.Next(0, 2) == 0;
+            Console.WriteLine("VERIFICANDO ENERGIA DEL SISTEMA...");
+            Thread.Sleep(2500);
+            if (energiaPrincipal)
+            {
+                Console.WriteLine("ENERGIA PRINCIPAL: todo bien");
+                Thread.Sleep(2500);
+            }
+            else if (energiaRespaldo)
+            {
+                Console.WriteLine("energia principal fallo");
+                Console.WriteLine("cambiando a energia de respaldo...");
+                Thread.Sleep(2500);
+                Console.WriteLine("energia de respaldo: activada");
+                Thread.Sleep(2500);
+
+                int turno = rndEnergia.Next(0, 2);
+                if (turno == 0)
+                {
+                    Console.WriteLine("turno: DIA");
+                }
+                else
+                {
+                    Console.WriteLine("turno: NOCHE");
+                }
+                Thread.Sleep(2500);
+            }
+            Console.WriteLine();
 
             while (continuar)
             {
@@ -65,11 +100,11 @@ namespace SistemaContraincendio
         static void MenuPrincipal()
         {
             Console.WriteLine("MENÚ DE MONITOREO");
-            Console.WriteLine("1. Cuartos de Piso 1: ");
-            Console.WriteLine("2. Cuartos de Piso 2: ");
-            Console.WriteLine("3. Cuartos de Piso 3: ");
-            Console.WriteLine("4. Monitoreo a Distancia 4: ");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("1. Monitorear pisos: ");
+            Console.WriteLine("2. Monitoreo a Distancia: ");
+            Console.WriteLine("3. Alerta Manual: ");
+            Console.WriteLine("4. Historial: ");
+            Console.WriteLine("5. Salir: ");
             Console.WriteLine();
             Console.Write("\nSeleccione una opción (1-5): ");
 
@@ -79,30 +114,102 @@ namespace SistemaContraincendio
                 switch (opcion)
                 {
                     case 1:
-                        Console.Clear();
-                        Console.WriteLine(" Ingresando al Piso 1...");
-                        new piso1().MostrarSimulacion();
-                        Console.WriteLine();
+                        bool salirPisos = false;
+                        while (!salirPisos)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("=== MONITOREAR PISOS ===");
+                            Console.WriteLine("1. Piso 1");
+                            Console.WriteLine("2. Piso 2");
+                            Console.WriteLine("3. Piso 3");
+                            Console.WriteLine("4. Regresar al menu principal");
+                            Console.Write("\nque piso desea ver: ");
+                            if (int.TryParse(Console.ReadLine(), out int pisoElegido))
+                            {
+                                if (pisoElegido == 1)
+                                {
+                                    Console.Clear();
+                                    new piso1().MostrarSimulacion();
+                                    historial.Add("piso 1 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - " + ultimoResultado);
+                                }
+                                else if (pisoElegido == 2)
+                                {
+                                    Console.Clear();
+                                    new piso2().MostrarEstado();
+                                    historial.Add("piso 2 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - " + ultimoResultado);
+                                }
+                                else if (pisoElegido == 3)
+                                {
+                                    Console.Clear();
+                                    new piso3().MostrarEstado();
+                                    historial.Add("piso 3 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - " + ultimoResultado);
+                                }
+                                else if (pisoElegido == 4)
+                                {
+                                    salirPisos = true;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("opcion no valida");
+                                    Console.ReadKey();
+                                }
+                            }
+                        }
                         break;
 
                     case 2:
-                        Console.Clear();
-                        Console.WriteLine(" Ingresando al Piso 2...");
-                        new piso2().MostrarEstado();
-                        Console.WriteLine();
-                        break;
-
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine(" Ingresando al Piso 3...");
-                        new piso3().MostrarEstado();
-                        break;
-                    case 4:
                         Console.Clear();
                         Console.WriteLine(" Ingresando al monitoreo a distancia...");
                         Thread.Sleep(500);
                         new MonitoreoDistancia().MostrarReporte();
                         Console.WriteLine();
+                        break;
+
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine("=== ESTACION MANUAL DE ALARMA ===");
+                        Console.WriteLine("Ingrese el piso donde esta el incendio (1, 2 o 3):");
+                        string piso = Console.ReadLine();
+                        Console.WriteLine("Ingrese el cuarto (1, 2 o ambos):");
+                        string cuarto = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.WriteLine("ALERTA MANUAL ACTIVADA!");
+                        try
+                        {
+                            SoundPlayer sonido = new SoundPlayer("Alarmas/sonidoPELIGRO.wav");
+                            sonido.Play();
+                        }
+                        catch { }
+                        if (cuarto == "ambos")
+                        {
+                            Console.WriteLine("incendio reportado en piso " + piso + " cuarto 1 y cuarto 2");
+                        }
+                        else
+                        {
+                            Console.WriteLine("incendio reportado en piso " + piso + " cuarto " + cuarto);
+                        }
+                        Console.WriteLine("activando luces estroboscopicas...");
+                        Console.WriteLine("llamando a bomberos...");
+                        historial.Add("alerta manual - piso " + piso + " cuarto " + cuarto + " - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+                        Console.ReadKey();
+                        break;
+
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine("historial de consultas:");
+                        Console.WriteLine("========================");
+                        if (historial.Count == 0)
+                        {
+                            Console.WriteLine("no hay consultas aun");
+                        }
+                        else
+                        {
+                            foreach (string registro in historial)
+                            {
+                                Console.WriteLine("- " + registro);
+                            }
+                        }
+                        Console.ReadKey();
                         break;
 
                     case 5:

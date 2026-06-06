@@ -29,7 +29,7 @@ namespace monitoreoadistancia
             Thread.Sleep(500); Console.Write(".");
             Thread.Sleep(500); Console.WriteLine(".");
             
-            Console.WriteLine("Conexión remota exitosa en tiempo real");
+            Console.WriteLine("Conexión lista");
           
             Console.WriteLine("-----------------------------------------------------------------------------");
 

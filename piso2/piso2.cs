@@ -46,7 +46,6 @@ namespace Piso2
 
             if (incendio1 && incendio2)
             {
-                //Program.ultimoResultado = "hubo incendio en cuarto 1 y cuarto 2";
                 Console.WriteLine("Alarma Critica: INCENDIO EN AMBOS CUARTOS DEL PISO 2");
                 Console.WriteLine("CUARTO 1 y CUARTO 2");
                 Console.WriteLine("luces de alarma encendidas en todo el hotel");
@@ -55,7 +54,6 @@ namespace Piso2
             }
             else if (incendio1)
             {
-              // Program.ultimoResultado = "hubo incendio en cuarto 1";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 1");
                 Console.WriteLine("luces de alarma encendidas en todo el hotel");
@@ -64,7 +62,6 @@ namespace Piso2
             }
             else if (incendio2)
             {
-                //Program.ultimoResultado = "hubo incendio en cuarto 2";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 2");
                 Console.WriteLine("luces de alarma encendidas en todo el hotel");
@@ -73,7 +70,6 @@ namespace Piso2
             }
             else
             {
-                //Program.ultimoResultado = "no hubo incendio";
                 Console.WriteLine("Sistema Seguro: PISO 2 SIN DAÑOS");
             }
             Console.WriteLine("=============================================================================");

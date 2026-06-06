@@ -42,7 +42,6 @@ namespace Piso3
 
             if (incendio1 && incendio2)
             {
-                //Program.ultimoResultado = "hubo incendio en cuarto 1 y cuarto 2";
                 Console.WriteLine("Alarma Critica: INCENDIO EN AMBOS CUARTOS");
                 Console.WriteLine("CUARTO 1 y CUARTO 2");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
@@ -51,7 +50,6 @@ namespace Piso3
             }
             else if (incendio1)
             {
-                //Program.ultimoResultado = "hubo incendio en cuarto 1";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 1");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
@@ -60,7 +58,6 @@ namespace Piso3
             }
             else if (incendio2)
             {
-               // Program.ultimoResultado = "hubo incendio en cuarto 2";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 2");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
@@ -69,7 +66,6 @@ namespace Piso3
             }
             else
             {
-                //Program.ultimoResultado = "no hubo incendio";
                 Console.WriteLine("Sistema Seguro: PISO 3 SIN DAÑOS");
             }
             Console.WriteLine("=============================================================================");

@@ -72,9 +72,10 @@ namespace monitoreoadistancia
 
                 Console.WriteLine("mandando ubicacion a los bomberos...");
                 Thread.Sleep(1500);
-                Console.WriteLine("\n BOMBEROS LLEGANDO AL SITIO ");
+                Console.WriteLine("\nbomberos llegando al sitio... ");
                 Thread.Sleep(1500);
-                Console.WriteLine("ya llegaaron los bomberos");
+                Console.WriteLine("ya llegaron los bomberos");
+                Thread.Sleep(1500);
             }
             else
             {

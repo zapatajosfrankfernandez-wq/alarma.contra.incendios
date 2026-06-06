@@ -54,12 +54,12 @@ namespace SistemaContraincendio
                 if (turno == 0)
                 {
                     turnoActual = "dia";
-                    Console.WriteLine("turno: DIA");
+                    Console.WriteLine("TURNO: dia");
                 }
                 else
                 {
                     turnoActual = "noche";
-                    Console.WriteLine("turno: NOCHE");
+                    Console.WriteLine("TURNO: noche");
                 }
                 Thread.Sleep(2500);
             }
@@ -126,7 +126,7 @@ namespace SistemaContraincendio
                             Console.WriteLine("2. Piso 2");
                             Console.WriteLine("3. Piso 3");
                             Console.WriteLine("4. Regresar al menu principal");
-                            Console.Write("\nque piso desea ver: ");
+                            Console.Write("\nQue piso desea ver: ");
                             if (int.TryParse(Console.ReadLine(), out int pisoElegido))
                             {
                                 if (pisoElegido == 1)
@@ -134,7 +134,7 @@ namespace SistemaContraincendio
                                     Console.Clear();
                                     var p1 = new piso1();
                                     p1.MostrarSimulacion();
-                                    string resultado1 = p1.HuboIncendio ? "hubo incendio" : "no hubo incendio";
+                                    string resultado1 = p1.HuboIncendio ? "Hubo incendio" : "no hubo incendio";
                                     historial.Add("piso 1 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado1);
                                 }
                                 else if (pisoElegido == 2)
@@ -142,7 +142,7 @@ namespace SistemaContraincendio
                                     Console.Clear();
                                     var p2 = new piso2();
                                     p2.MostrarEstado();
-                                    string resultado2 = p2.HuboIncendio ? "hubo incendio" : "no hubo incendio";
+                                    string resultado2 = p2.HuboIncendio ? "Hubo incendio" : "no hubo incendio";
                                     historial.Add("piso 2 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado2);
                                 }
                                 else if (pisoElegido == 3)
@@ -177,7 +177,7 @@ namespace SistemaContraincendio
                     case 3:
                         Console.Clear();
                         Console.WriteLine("=== ESTACION MANUAL DE ALARMA ===");
-                        Console.WriteLine("Ingrese el piso donde esta el incendio (1, 2 o 3):");
+                        Console.WriteLine("Ingrese el piso donde esta el incendio:");
                         string piso = Console.ReadLine();
                         Console.WriteLine("Ingrese el cuarto: ");
                         string cuarto = Console.ReadLine();

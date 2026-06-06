@@ -10,10 +10,12 @@ namespace Piso3
 {
     public class piso3
     {
+        public bool HuboIncendio { get; private set; }
         public void MostrarEstado()
         {
             Console.Clear();
             Random random = new Random();
+
             int temp1 = random.Next(15, 75);
             double humo1 = Math.Round(random.NextDouble() * 100, 1);
             int temp2 = random.Next(15, 75);
@@ -40,6 +42,7 @@ namespace Piso3
 
             if (incendio1 && incendio2)
             {
+                //Program.ultimoResultado = "hubo incendio en cuarto 1 y cuarto 2";
                 Console.WriteLine("Alarma Critica: INCENDIO EN AMBOS CUARTOS");
                 Console.WriteLine("CUARTO 1 y CUARTO 2");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
@@ -48,6 +51,7 @@ namespace Piso3
             }
             else if (incendio1)
             {
+                //Program.ultimoResultado = "hubo incendio en cuarto 1";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 1");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
@@ -56,6 +60,7 @@ namespace Piso3
             }
             else if (incendio2)
             {
+               // Program.ultimoResultado = "hubo incendio en cuarto 2";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 2");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
@@ -64,10 +69,11 @@ namespace Piso3
             }
             else
             {
+                //Program.ultimoResultado = "no hubo incendio";
                 Console.WriteLine("Sistema Seguro: PISO 3 SIN DAÑOS");
             }
             Console.WriteLine("=============================================================================");
-
+            HuboIncendio = incendio1 || incendio2;
             Console.WriteLine("\nPresione cualquier tecla para regresar...");
             Console.ReadKey();
         }

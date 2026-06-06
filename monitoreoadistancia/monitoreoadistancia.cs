@@ -70,17 +70,18 @@ namespace monitoreoadistancia
                 Thread.Sleep(800); Console.WriteLine(".");
 
 
-                Console.WriteLine("Transmitiendo reporte del incendio y ubicación exacta...");
+                Console.WriteLine("mandando ubicacion a los bomberos...");
                 Thread.Sleep(1500);
                 Console.WriteLine("\n BOMBEROS LLEGANDO AL SITIO ");
                 Thread.Sleep(1500);
-                Console.WriteLine("Unidades en la puerta del Hotel Cielo");
+                Console.WriteLine("ya llegaaron los bomberos");
             }
             else
             {
                 Console.WriteLine();
-                Console.WriteLine("  Sistema General: TODO EN ORDEN - NO SE REGISTRARON INCENDIOS");
+                Console.WriteLine("  SIN INCENDIOS REGISTRADOS");
                 Console.WriteLine();
+                Console.ReadKey();
             }
 
             Console.WriteLine("\nPresione cualquier tecla para regresar al menú principal...");

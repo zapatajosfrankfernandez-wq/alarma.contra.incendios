@@ -22,6 +22,7 @@ namespace Piso1
         int direccionSensorC1 = 1;
         int direccionSensorC2 = 2;
         public Random rnd = new Random();
+        public bool HuboIncendio { get; private set; }
 
         public void MostrarSimulacion()
         {
@@ -136,14 +137,17 @@ namespace Piso1
                 EscribirCentrado("CUARTO 2 Sensor Dirección");
                 EscribirCentrado("Luces Estroboscópicas: ACTIVADA EN TODOS LOS PISOS");
                 Console.WriteLine("Porfavor Evacuar");
+
                 ReproducirAlarma2("Alarmas/sonidoLEVE.wav");
             }
             else
             {
                 EscribirCentrado("Sistema Seguro: PISO 1 SIN DAÑOS");
+              
             }
 
             Console.WriteLine("                      ============================================================================");
+            HuboIncendio = cuarto1Peligro || cuarto2Peligro;
             Console.WriteLine("\nPresione cualquier tecla para regresar...");
             Console.ReadKey();
         }

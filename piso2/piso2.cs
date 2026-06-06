@@ -10,6 +10,7 @@ namespace Piso2
 {
     public class piso2
     {
+        public bool HuboIncendio { get; private set; }
         public void MostrarEstado()
         {
             Console.Clear();
@@ -42,36 +43,41 @@ namespace Piso2
             Console.WriteLine("║ Última actualización: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss ") + "                          ");
             Console.WriteLine("=============================================================================");
 
+
             if (incendio1 && incendio2)
             {
+                //Program.ultimoResultado = "hubo incendio en cuarto 1 y cuarto 2";
                 Console.WriteLine("Alarma Critica: INCENDIO EN AMBOS CUARTOS DEL PISO 2");
                 Console.WriteLine("CUARTO 1 y CUARTO 2");
-                Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
+                Console.WriteLine("luces de alarma encendidas en todo el hotel");
                 Console.WriteLine("Porfavor Evacuar");
                 ReproducirAlarmaf("Alarmas/sonidoPELIGRO.wav");
             }
             else if (incendio1)
             {
+              // Program.ultimoResultado = "hubo incendio en cuarto 1";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 1");
-                Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
+                Console.WriteLine("luces de alarma encendidas en todo el hotel");
                 Console.WriteLine("Porfavor Evacuar");
                 ReproducirAlarmaf("Alarmas/sonidoLEVE.wav");
             }
             else if (incendio2)
             {
+                //Program.ultimoResultado = "hubo incendio en cuarto 2";
                 Console.WriteLine("ALARMA DE INCENDIO");
                 Console.WriteLine("CUARTO 2");
-                Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
+                Console.WriteLine("luces de alarma encendidas en todo el hotel");
                 Console.WriteLine("Porfavor Evacuar");
                 ReproducirAlarmaf("Alarmas/sonidoLEVE.wav");
             }
             else
             {
-                Console.WriteLine(" Sistema Seguro: PISO 2 SIN DAÑOS");
+                //Program.ultimoResultado = "no hubo incendio";
+                Console.WriteLine("Sistema Seguro: PISO 2 SIN DAÑOS");
             }
             Console.WriteLine("=============================================================================");
-
+            HuboIncendio = incendio1 || incendio2;
             Console.WriteLine("\nPresione cualquier tecla para regresar...");
             Console.ReadKey();
         }

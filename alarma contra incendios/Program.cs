@@ -18,6 +18,7 @@ namespace SistemaContraincendio
           static bool continuar = true;
           static string ultimoResultado = "";
           static Random rndEnergia = new Random();
+          static string turnoActual = "";
           static List<string> historial = new List<string>();
           static bool energiaPrincipal = true;
           static bool energiaRespaldo = true;
@@ -52,10 +53,12 @@ namespace SistemaContraincendio
                 int turno = rndEnergia.Next(0, 2);
                 if (turno == 0)
                 {
+                    turnoActual = "dia";
                     Console.WriteLine("turno: DIA");
                 }
                 else
                 {
+                    turnoActual = "noche";
                     Console.WriteLine("turno: NOCHE");
                 }
                 Thread.Sleep(2500);
@@ -129,20 +132,26 @@ namespace SistemaContraincendio
                                 if (pisoElegido == 1)
                                 {
                                     Console.Clear();
-                                    new piso1().MostrarSimulacion();
-                                    historial.Add("piso 1 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - " + ultimoResultado);
+                                    var p1 = new piso1();
+                                    p1.MostrarSimulacion();
+                                    string resultado1 = p1.HuboIncendio ? "hubo incendio" : "no hubo incendio";
+                                    historial.Add("piso 1 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado1);
                                 }
                                 else if (pisoElegido == 2)
                                 {
                                     Console.Clear();
-                                    new piso2().MostrarEstado();
-                                    historial.Add("piso 2 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - " + ultimoResultado);
+                                    var p2 = new piso2();
+                                    p2.MostrarEstado();
+                                    string resultado2 = p2.HuboIncendio ? "hubo incendio" : "no hubo incendio";
+                                    historial.Add("piso 2 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado2);
                                 }
                                 else if (pisoElegido == 3)
                                 {
                                     Console.Clear();
-                                    new piso3().MostrarEstado();
-                                    historial.Add("piso 3 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - " + ultimoResultado);
+                                    var p3 = new piso3();
+                                    p3.MostrarEstado();
+                                    string resultado3 = p3.HuboIncendio ? "hubo incendio" : "no hubo incendio";
+                                    historial.Add("piso 3 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado3);
                                 }
                                 else if (pisoElegido == 4)
                                 {
@@ -170,10 +179,10 @@ namespace SistemaContraincendio
                         Console.WriteLine("=== ESTACION MANUAL DE ALARMA ===");
                         Console.WriteLine("Ingrese el piso donde esta el incendio (1, 2 o 3):");
                         string piso = Console.ReadLine();
-                        Console.WriteLine("Ingrese el cuarto (1, 2 o ambos):");
+                        Console.WriteLine("Ingrese el cuarto: ");
                         string cuarto = Console.ReadLine();
                         Console.WriteLine();
-                        Console.WriteLine("ALERTA MANUAL ACTIVADA!");
+                        Console.WriteLine("ALERTA MANUAL ACTIVADA");
                         try
                         {
                             SoundPlayer sonido = new SoundPlayer("Alarmas/sonidoPELIGRO.wav");
@@ -190,7 +199,7 @@ namespace SistemaContraincendio
                         }
                         Console.WriteLine("activando luces estroboscopicas...");
                         Console.WriteLine("llamando a bomberos...");
-                        historial.Add("alerta manual - piso " + piso + " cuarto " + cuarto + " - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+                        historial.Add("alerta manual - piso " + piso + " cuarto " + cuarto + " - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual);
                         Console.ReadKey();
                         break;
 

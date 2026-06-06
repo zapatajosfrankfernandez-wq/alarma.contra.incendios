@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "piso2", "piso2\piso2.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "piso3", "piso3\piso3.csproj", "{2CEAF448-B455-41A0-8B8A-57B6ADC76D84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monitoreoadistancia", "monitoreoadistancia\monitoreoadistancia.csproj", "{3DD6C441-1C6D-4C06-B1A1-A569534360C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2CEAF448-B455-41A0-8B8A-57B6ADC76D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CEAF448-B455-41A0-8B8A-57B6ADC76D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CEAF448-B455-41A0-8B8A-57B6ADC76D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD6C441-1C6D-4C06-B1A1-A569534360C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD6C441-1C6D-4C06-B1A1-A569534360C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD6C441-1C6D-4C06-B1A1-A569534360C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD6C441-1C6D-4C06-B1A1-A569534360C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -48,7 +48,7 @@ namespace Piso2
                 Console.WriteLine("CUARTO 1 y CUARTO 2");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
                 Console.WriteLine("Porfavor Evacuar");
-                ReproducirAlarmaf("Alarmas/sonidoPELIGRO.wav"); 
+                ReproducirAlarmaf("Alarmas/sonidoPELIGRO.wav");
             }
             else if (incendio1)
             {
@@ -56,7 +56,7 @@ namespace Piso2
                 Console.WriteLine("CUARTO 1");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
                 Console.WriteLine("Porfavor Evacuar");
-                ReproducirAlarmaf("Alarmas/sonidoLEVE.wav"); 
+                ReproducirAlarmaf("Alarmas/sonidoLEVE.wav");
             }
             else if (incendio2)
             {
@@ -64,7 +64,7 @@ namespace Piso2
                 Console.WriteLine("CUARTO 2");
                 Console.WriteLine("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
                 Console.WriteLine("Porfavor Evacuar");
-                ReproducirAlarmaf("Alarmas/sonidoLEVE.wav"); 
+                ReproducirAlarmaf("Alarmas/sonidoLEVE.wav");
             }
             else
             {

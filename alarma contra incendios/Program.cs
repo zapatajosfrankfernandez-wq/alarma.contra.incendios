@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using monitoreoadistancia;
 using Piso1;
 using Piso2;
 using Piso3;
@@ -18,18 +19,18 @@ namespace SistemaContraincendio
         static void Main(string[] args)
         {
             Console.Title = "Sistema de Monitoreo - EL BOMBERITO";
-             Console.WriteLine("                               LIMA PERU  - PERÚ 2026                                 ");
-             Console.WriteLine("===================================================================================");
-             Console.WriteLine("                             H O T E L  C I E L O                                ");             
-             Console.WriteLine($"                                  {DateTime.Now}                                      ");
-             Console.WriteLine("===================================================================================");
-             Console.WriteLine();
-           
+            Console.WriteLine("                               LIMA PERU  - PERÚ 2026                                 ");
+            Console.WriteLine("===================================================================================");
+            Console.WriteLine("                             H O T E L  C I E L O                                ");
+            Console.WriteLine($"                                  {DateTime.Now}                                      ");
+            Console.WriteLine("===================================================================================");
+            Console.WriteLine();
+
 
             while (continuar)
             {
 
-                Console.Clear();              
+                Console.Clear();
                 DibujarEdificio();
                 MenuPrincipal();
 
@@ -67,9 +68,10 @@ namespace SistemaContraincendio
             Console.WriteLine("1. Cuartos de Piso 1: ");
             Console.WriteLine("2. Cuartos de Piso 2: ");
             Console.WriteLine("3. Cuartos de Piso 3: ");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine("4. Monitoreo a Distancia 4: ");
+            Console.WriteLine("5. Salir");
             Console.WriteLine();
-            Console.Write("\nSeleccione una opción (1-4): ");
+            Console.Write("\nSeleccione una opción (1-5): ");
 
             if (int.TryParse(Console.ReadLine(), out int opcion))
             {
@@ -95,15 +97,22 @@ namespace SistemaContraincendio
                         Console.WriteLine(" Ingresando al Piso 3...");
                         new piso3().MostrarEstado();
                         break;
-
                     case 4:
+                        Console.Clear();
+                        Console.WriteLine(" Ingresando al monitoreo a distancia...");
+                        Thread.Sleep(500);
+                        new MonitoreoDistancia().MostrarReporte();
+                        Console.WriteLine();
+                        break;
+
+                    case 5:
                         try
                         {
                             SoundPlayer sonidoSalir = new SoundPlayer("Alarmas/sonidoLEVE.wav");
                             sonidoSalir.Play();
                         }
                         catch (Exception ex)
-                        { 
+                        {
                             Console.WriteLine("Error al reproducir sonido de salida: " + ex.Message);
                         }
                         Console.Clear();
@@ -117,7 +126,7 @@ namespace SistemaContraincendio
                         Console.WriteLine("          M U C H A S  G R A C I A S  P O R   T E N E R   C O N F I A N Z A   E N   N O S O T R O S");
                         continuar = false;
                         Console.ReadKey();
-                     
+
                         return;
 
                     default:
@@ -128,11 +137,9 @@ namespace SistemaContraincendio
             }
             else
             {
-                Console.WriteLine(" Entrada inválida. Debe ingresar un número del 1 al 6.");
-            }         
-            Console.ReadKey();
-           
+                Console.WriteLine(" Entrada inválida. Debe ingresar un número del 1 al 5.");
+                Console.ReadKey();
+            }
         }
     }
 }
-

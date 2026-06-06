@@ -112,7 +112,7 @@ namespace Piso1
         {
             bool cuarto1Peligro = dato.Temp1 >= 30.0 || dato.Humo1 >= 48.0;
             bool cuarto2Peligro = dato.Temp2 >= 30.0 || dato.Humo2 >= 48.0;
-            
+
             Console.WriteLine("                      ===========================================================================");
             if (cuarto1Peligro && cuarto2Peligro)
             {
@@ -135,7 +135,7 @@ namespace Piso1
                 EscribirCentrado("ALARMA DE INCENDIO");
                 EscribirCentrado("CUARTO 2 Sensor Dirección");
                 EscribirCentrado("Luces Estroboscópicas: ACTIVADA EN TODOS LOS PISOS");
-                Console.WriteLine(                                                     "Porfavor Evacuar");
+                Console.WriteLine("Porfavor Evacuar");
                 ReproducirAlarma2("Alarmas/sonidoLEVE.wav");
             }
             else

@@ -29,8 +29,8 @@ namespace SistemaContraincendio
             Console.Title = "Sistema de Monitoreo - EL BOMBERITO";
             Console.WriteLine("                               LIMA PERU  - PERÚ 2026                                 ");
             Console.WriteLine("===================================================================================");
-            Console.WriteLine("                             H O T E L  C I E L O                                ");
-            Console.WriteLine($"                                  {DateTime.Now}                                      ");
+            Console.WriteLine("                               H O T E L  C I E L O                                ");
+            Console.WriteLine($"                                {DateTime.Now}                                      ");
             Console.WriteLine("===================================================================================");
             Console.WriteLine();
 

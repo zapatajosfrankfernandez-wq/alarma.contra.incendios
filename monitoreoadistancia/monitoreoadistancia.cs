@@ -163,7 +163,7 @@ namespace monitoreoadistancia
         {
             Console.WriteLine();
             Console.WriteLine("  ╔═════════════════════════════════════════════════════════════════╗");
-            Console.WriteLine($" ║  SISTEMA AUTOMÁTICO ACTIVO EN PISO {piso} - CUARTO {cuarto}!    ║");
+            Console.WriteLine("  ║      SISTEMA AUTOMÁTICO ACTIVO EN PISO  - CUARTO                ║");
             Console.WriteLine("  ║     ASPERSORES DE AGUA ACTIVADOS EN LA ZONA AFECTADA            ║");
             Console.WriteLine("  ╚═════════════════════════════════════════════════════════════════╝");
             Thread.Sleep(800);

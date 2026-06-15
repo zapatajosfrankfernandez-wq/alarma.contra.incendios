@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
@@ -19,8 +19,6 @@ namespace Piso1
 
     public class piso1
     {
-        int direccionSensorC1 = 1;
-        int direccionSensorC2 = 2;
         public Random rnd = new Random();
         public bool HuboIncendio { get; private set; }
 
@@ -95,18 +93,6 @@ namespace Piso1
             int ancho = Console.WindowWidth;
             int margen = Math.Max((ancho - texto.Length) / 2, 0);
             Console.Write(new string(' ', margen));
-            switch (nivel)
-            {
-                case "Estable":
-                case "Bajo":
-                    break;
-                case "Normal":
-                case "Moderado":
-                    break;
-                case "Peligro":
-                    break;
-            }
-
             Console.WriteLine(texto);
         }
         public void VerificarAlarmas(P1 dato)

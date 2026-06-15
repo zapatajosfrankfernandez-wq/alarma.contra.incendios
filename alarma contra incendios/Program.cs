@@ -15,15 +15,57 @@ namespace SistemaContraincendio
 {
     public class Program
     {
-          static bool continuar = true;
-          static string ultimoResultado = "";
-          static Random rndEnergia = new Random();
-          static string turnoActual = "";
-          static List<string> historial = new List<string>();
-          static bool energiaPrincipal = true;
-          static bool energiaRespaldo = true;
-             
-        
+        static bool continuar = true;
+        static Random rndEnergia = new Random();
+        static string turnoActual = "";
+        static List<string> historial = new List<string>();
+        static bool energiaPrincipal = true;
+        static bool energiaRespaldo = true;
+        static void LucesEstroboscopicas()
+        {
+            try
+            {
+                SoundPlayer sonido = new SoundPlayer("Alarmas/sonidoPELIGRO.wav");
+                sonido.Play();
+            }
+            catch { }
+
+            for (int i = 0; i < 6; i++)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+
+                Console.WriteLine();
+                Console.WriteLine("========================================");
+                Console.WriteLine("                                      ");
+                Console.WriteLine("      INCENDIO DETECTADO !!!          ");
+                Console.WriteLine("      EVACUE EL HOTEL AHORA !!!       ");
+                Console.WriteLine("                                      ");
+                Console.WriteLine("========================================");
+
+                Console.Beep(1500, 200);
+                Thread.Sleep(250);
+
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Clear();
+
+                Console.WriteLine();
+                Console.WriteLine("=========================================");
+                Console.WriteLine("                                      ");
+                Console.WriteLine("   LUCES ESTROBOSCOPICAS ACTIVADAS    ");
+                Console.WriteLine("                                      ");
+                Console.WriteLine("========================================");
+
+                Console.Beep(1000, 200);
+                Thread.Sleep(250);
+            }
+
+            Console.ResetColor();
+        }
+
+
         static void Main(string[] args)
         {
             Console.Title = "Sistema de Monitoreo - EL BOMBERITO";
@@ -134,6 +176,10 @@ namespace SistemaContraincendio
                                     Console.Clear();
                                     var p1 = new piso1();
                                     p1.MostrarSimulacion();
+                                    if (p1.HuboIncendio)
+                                    {
+                                        LucesEstroboscopicas();
+                                    }
                                     string resultado1 = p1.HuboIncendio ? "Hubo incendio" : "no hubo incendio";
                                     historial.Add("piso 1 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado1);
                                 }
@@ -142,6 +188,10 @@ namespace SistemaContraincendio
                                     Console.Clear();
                                     var p2 = new piso2();
                                     p2.MostrarEstado();
+                                    if (p2.HuboIncendio)
+                                    {
+                                        LucesEstroboscopicas();
+                                    }
                                     string resultado2 = p2.HuboIncendio ? "Hubo incendio" : "no hubo incendio";
                                     historial.Add("piso 2 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado2);
                                 }
@@ -150,6 +200,10 @@ namespace SistemaContraincendio
                                     Console.Clear();
                                     var p3 = new piso3();
                                     p3.MostrarEstado();
+                                    if (p3.HuboIncendio)
+{
+    LucesEstroboscopicas();
+}
                                     string resultado3 = p3.HuboIncendio ? "hubo incendio" : "no hubo incendio";
                                     historial.Add("piso 3 - " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - turno: " + turnoActual + " - " + resultado3);
                                 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
@@ -188,7 +188,7 @@ namespace monitoreoadistancia
                 }
                 Thread.Sleep(600); 
             }
-            Console.WriteLine($"Temperatura controlada con éxito en Piso {piso} - Cuarto {cuarto}");;
+            Console.WriteLine($"Temperatura controlada con éxito en Piso {piso} - Cuarto {cuarto}");
             Console.WriteLine();
         }
 

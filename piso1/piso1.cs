@@ -106,7 +106,7 @@ namespace Piso1
                 EscribirCentrado("INCENDIO EN AMBOS CUARTOS");
                 EscribirCentrado("Cuarto 1  y Cuarto 2");
                 EscribirCentrado("Luces Estroboscópicas: ACTIVADA EN TODO LOS PISOS");
-                Console.WriteLine("                                                 Porfavor Evacuar");
+                Console.WriteLine("\n                                                Porfavor Evacuar");
                 ReproducirAlarma1("Alarmas/sonidoPELIGRO.wav");
             }
             else if (cuarto1Peligro)
